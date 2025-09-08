@@ -1,0 +1,120 @@
+{
+ "layout": {
+   "configuration": "card-centered"
+ },
+ "style": {
+   "theme": "modern-professional",
+   "mode": "light",
+   "colors": {
+     "accent": "#000000",
+     "background": "bg-white",
+     "border": "border-transparent",
+     "border_default": "border-gray-200",
+     "primary": "text-gray-900",
+     "secondary": "text-gray-600",
+     "card_backgrounds": "bg-gray-50"
+   },
+   "shadow": "shadow-sm",
+   "fonts": {
+     "base": "font-sans",
+     "headings": {
+       "font": "font-serif",
+       "size": ["text-[48px]", "text-[64px]"],
+       "weight": "font-normal",
+       "letter_spacing": "tracking-tight",
+       "line_height": "leading-tight"
+     },
+     "subheadings": {
+       "size": ["text-[18px]", "text-[20px]"],
+       "weight": "font-medium"
+     },
+     "body": {
+       "size": ["text-[14px]", "text-[16px]"],
+       "weight": "font-normal"
+     }
+   },
+   "placeholders": {
+     "no_missing_images": true,
+     "no_cropping_issues": true
+   }
+ },
+ "animation": {
+   "type": "fade",
+   "sequence": false,
+   "duration": "duration-[300ms]",
+   "hover_effects": {
+     "transition": "transition-all",
+     "timing": "ease-out",
+     "duration": "duration-200",
+     "effects": ["hover:shadow-md", "hover:bg-gray-50"]
+   },
+   "style": "subtle"
+ },
+ "hero": {
+   "tag_component": {
+     "background": "bg-black",
+     "text": "text-white",
+     "rounded": "rounded-full",
+     "padding": "px-4 py-2",
+     "font": "text-sm font-medium"
+   },
+   "accent_text": {
+     "color": "text-black",
+     "optional_svg": false
+   },
+   "image_graphics": {
+     "placement_options": ["right"],
+     "required": true,
+     "style": "illustrated_characters"
+   },
+   "user_profiles_list": {
+     "display": false,
+     "style": "company_logos_instead"
+   },
+   "background_decoration": {
+     "options": ["clean_geometric_shapes", "subtle_illustration"],
+     "transition_into_next_component": true,
+     "style": "minimal_rounded_cards"
+   },
+   "cta_buttons": {
+     "primary": {
+       "background": "bg-black",
+       "text": "text-white",
+       "rounded": "rounded-full",
+       "padding": "px-6 py-3",
+       "hover": "hover:bg-gray-800"
+     },
+     "secondary": {
+       "background": "bg-transparent",
+       "text": "text-black",
+       "border": "border border-black",
+       "rounded": "rounded-full"
+     }
+   }
+ },
+ "comparison_section": {
+   "layout": "two_column_comparison",
+   "card_style": {
+     "background": "bg-gray-50",
+     "rounded": "rounded-2xl",
+     "padding": "p-8",
+     "shadow": "shadow-none"
+   },
+   "checkmarks": {
+     "style": "filled_circle",
+     "color": "bg-black text-white"
+   }
+ },
+ "process_section": {
+   "numbering": {
+     "style": "circle_outlined",
+     "background": "bg-white",
+     "border": "border-2 border-black",
+     "text": "text-black font-bold"
+   },
+   "illustrations": {
+     "style": "simple_line_art",
+     "characters": true
+   }
+ }
+}

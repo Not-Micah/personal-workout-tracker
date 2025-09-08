@@ -24,3 +24,84 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Workout App Reusable Components */
+.workout-header {
+  @apply sticky top-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-4 py-4 z-50;
+}
+
+.workout-exercise-container {
+  @apply border border-gray-200 overflow-hidden;
+}
+
+.workout-exercise-title {
+  @apply bg-gray-600 px-4 py-3 border-b border-gray-200;
+}
+
+.workout-table-header {
+  @apply grid border-b border-gray-200 bg-gray-50;
+}
+
+.workout-table-header-cell {
+  @apply flex items-center justify-center text-xs font-medium text-gray-600 py-2 border-r border-gray-200 last:border-r-0;
+}
+
+.workout-table-row {
+  @apply grid border-b border-gray-200 last:border-b-0;
+}
+
+.workout-table-row-even {
+  @apply bg-white;
+}
+
+.workout-table-row-odd {
+  @apply bg-gray-50;
+}
+
+.workout-weight-label {
+  @apply flex items-center px-3 text-xs font-medium text-gray-700 py-3 border-r border-gray-200;
+}
+
+.workout-input-cell {
+  @apply relative border-r border-gray-200 last:border-r-0;
+}
+
+.workout-input {
+  @apply w-full h-12 text-center text-sm font-medium text-gray-900 bg-transparent focus:bg-gray-100 focus:outline-none;
+}
+
+.workout-display-cell {
+  @apply flex items-center justify-center h-12 text-sm font-medium text-gray-900 border-r border-gray-200 last:border-r-0;
+}
+
+.workout-previous-reps {
+  @apply absolute top-0 right-0.5 text-[10px] text-gray-400 leading-none pointer-events-none z-10 opacity-50;
+}
+
+.workout-save-button {
+  @apply fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 p-4 z-30;
+}
+
+.workout-save-button-active {
+  @apply w-full py-3 rounded-lg font-medium transition-colors bg-gray-900 text-white hover:bg-gray-800;
+}
+
+.workout-save-button-disabled {
+  @apply w-full py-3 rounded-lg font-medium transition-colors bg-gray-200 text-gray-400 cursor-not-allowed;
+}
+
+.calendar-day {
+  @apply aspect-square flex items-center justify-center transition-all rounded-lg;
+}
+
+.calendar-day-workout {
+  @apply bg-gray-100 text-gray-900 cursor-pointer hover:bg-gray-200;
+}
+
+.calendar-day-empty {
+  @apply bg-white text-gray-400 cursor-default;
+}
+
+.calendar-day-today {
+  @apply ring-1 ring-gray-300;
+}
