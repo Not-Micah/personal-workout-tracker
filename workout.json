@@ -2,22 +2,25 @@
   "Push Hypertrophy": [
     { "name": "Dips", "sets": 6, "weights": [0] },
     { "name": "Tricep Extensions", "sets": 4, "weights": [35, 42.5] },
-    { "name": "Bench Press", "sets": 4, "weights": [135, 155, 185] },
-    { "name": "Overhead Press", "sets": 3, "weights": [95, 115] },
-    { "name": "Lateral Raises", "sets": 3, "weights": [15, 20, 25] }
+    { "name": "Tricep Pull Downs", "sets": 4, "weights": [70, 80, 90] }
+  ],
+  "Push Skills": [
+    { "name": "Handstand Holds", "sets": 3, "duration": "30-60 seconds" },
+    { "name": "Pike Pushups", "sets": 3, "reps": "8-12" }
   ],
   "Pull Hypertrophy": [
-    { "name": "Pull-ups", "sets": 5, "weights": [0, 25] },
-    { "name": "Barbell Rows", "sets": 4, "weights": [135, 155, 175] },
-    { "name": "Lat Pulldowns", "sets": 4, "weights": [140, 160] },
-    { "name": "Face Pulls", "sets": 3, "weights": [70, 80] },
+    { "name": "Pull Ups", "sets": 5, "weights": [0, 25] },
+    { "name": "Pull Down", "sets": 4, "weights": [140, 160] },
+    { "name": "Rows", "sets": 4, "weights": [135, 155, 175] },
     { "name": "Bicep Curls", "sets": 3, "weights": [25, 30, 35] }
   ],
-  "Legs Hypertrophy": [
-    { "name": "Squats", "sets": 5, "weights": [185, 205, 225] },
-    { "name": "Romanian Deadlifts", "sets": 4, "weights": [185, 205] },
-    { "name": "Leg Press", "sets": 4, "weights": [270, 315, 360] },
-    { "name": "Leg Curls", "sets": 3, "weights": [90, 110] },
-    { "name": "Calf Raises", "sets": 4, "weights": [90, 110, 130] }
+  "Pull Skills": [
+    { "name": "Front Lever", "sets": 3, "progression": "tucked/advanced tucked" },
+    { "name": "One Arm Shrugs", "sets": 3, "reps": "5-8 each arm" }
+  ],
+  "Leg Hypertrophy": [
+    { "name": "Hack Squat", "sets": 4, "weights": [180, 225, 270] },
+    { "name": "Leg Extensions", "sets": 4, "weights": [90, 110, 130] },
+    { "name": "Stair Master", "sets": 1, "weights": [0] }
   ]
 }

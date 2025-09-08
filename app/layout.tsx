@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Personal Workout Tracker",
-  description: "Track your workouts with a simple calendar interface",
+  description: "Track your workouts with a simple calendar interface!",
 };
 
 export default function RootLayout({
