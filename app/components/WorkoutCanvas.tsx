@@ -48,7 +48,16 @@ export default function WorkoutCanvas({ templateName, exercises, date, onSave }:
   const fetchPreviousWorkout = useCallback(async () => {
     try {
       const response = await fetch('/api/workouts')
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
       const workouts = await response.json()
+      
+      // Ensure workouts is an array before using .find()
+      if (!Array.isArray(workouts)) {
+        console.error('Expected array but got:', workouts)
+        return
+      }
       
       const lastWorkout = workouts.find((workout: { templateName: string; date: string }) => 
         workout.templateName === templateName && workout.date !== date.toISOString()

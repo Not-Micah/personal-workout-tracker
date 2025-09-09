@@ -22,6 +22,13 @@ export async function GET() {
     return NextResponse.json(workouts)
   } catch (error) {
     console.error('Error fetching workouts:', error)
+    
+    // Return empty array instead of error if database is not set up yet
+    if (error instanceof Error && error.message.includes('database')) {
+      console.log('Database not ready, returning empty workouts array')
+      return NextResponse.json([])
+    }
+    
     return NextResponse.json(
       { error: 'Failed to fetch workouts' },
       { status: 500 }
@@ -66,6 +73,15 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(workout, { status: 201 })
   } catch (error) {
     console.error('Error creating workout:', error)
+    
+    // Handle database connection issues gracefully
+    if (error instanceof Error && error.message.includes('database')) {
+      return NextResponse.json(
+        { error: 'Database not available. Please try again later.' },
+        { status: 503 }
+      )
+    }
+    
     return NextResponse.json(
       { error: 'Failed to create workout' },
       { status: 500 }

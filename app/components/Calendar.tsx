@@ -24,10 +24,20 @@ export default function Calendar() {
   const fetchWorkouts = async () => {
     try {
       const response = await fetch('/api/workouts')
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
       const data = await response.json()
-      setWorkouts(data)
+      // Ensure data is an array before setting it
+      if (Array.isArray(data)) {
+        setWorkouts(data)
+      } else {
+        console.error('Expected array but got:', data)
+        setWorkouts([])
+      }
     } catch (error) {
       console.error('Error fetching workouts:', error)
+      setWorkouts([]) // Set empty array on error
     }
   }
 

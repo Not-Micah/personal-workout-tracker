@@ -35,6 +35,15 @@ export async function GET(
     return NextResponse.json(formattedWorkout)
   } catch (error) {
     console.error('Error fetching workout:', error)
+    
+    // Handle database connection issues gracefully
+    if (error instanceof Error && error.message.includes('database')) {
+      return NextResponse.json(
+        { error: 'Database not available' },
+        { status: 503 }
+      )
+    }
+    
     return NextResponse.json(
       { error: 'Failed to fetch workout' },
       { status: 500 }
