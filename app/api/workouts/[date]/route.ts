@@ -3,12 +3,13 @@ import { prisma } from '@/lib/prisma'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { date: string } }
+  { params }: { params: Promise<{ date: string }> }
 ) {
   try {
+    const { date } = await params
     const workout = await prisma.workout.findUnique({
       where: {
-        date: new Date(params.date),
+        date: new Date(date),
       },
       include: {
         exercises: true,
