@@ -1,7 +1,7 @@
 'use client'
 
 import WorkoutTable from './ui/WorkoutTable'
-import { parseExerciseData, formatDateForDisplay, Exercise, Workout } from '@/lib/utils'
+import { parseExerciseData, formatDateForDisplay, Workout } from '@/lib/utils'
 
 interface WorkoutDetailProps {
   workout: Workout
@@ -31,7 +31,7 @@ export default function WorkoutDetail({ workout, onClose }: WorkoutDetailProps) 
 
         <div className="p-4 space-y-4">
           {/* Exercises */}
-          {workout.exercises.map((exercise, exerciseIndex) => {
+          {workout.exercises.map((exercise) => {
             const parsedExercise = parseExerciseData(exercise)
             return (
               <div key={exercise.id} className="workout-exercise-container">

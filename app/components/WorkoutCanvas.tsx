@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import WorkoutTable from './ui/WorkoutTable'
 import { generateEmptyRepsArray, isWorkoutComplete } from '@/lib/utils'
 
@@ -24,17 +24,18 @@ interface ExerciseData {
   reps: number[][]
 }
 
+interface PreviousWorkout {
+  date: string
+  templateName: string
+  exercises: ExerciseData[]
+}
+
 export default function WorkoutCanvas({ templateName, exercises, date, onSave }: WorkoutCanvasProps) {
   const [exerciseData, setExerciseData] = useState<ExerciseData[]>([])
-  const [previousWorkout, setPreviousWorkout] = useState<any>(null)
+  const [previousWorkout, setPreviousWorkout] = useState<PreviousWorkout | null>(null)
   const [saving, setSaving] = useState(false)
 
-  useEffect(() => {
-    initializeExerciseData()
-    fetchPreviousWorkout()
-  }, [exercises])
-
-  const initializeExerciseData = () => {
+  const initializeExerciseData = useCallback(() => {
     const initialData = exercises.map(exercise => ({
       name: exercise.name,
       sets: exercise.sets,
@@ -42,21 +43,21 @@ export default function WorkoutCanvas({ templateName, exercises, date, onSave }:
       reps: generateEmptyRepsArray(exercise.weights, exercise.sets)
     }))
     setExerciseData(initialData)
-  }
+  }, [exercises])
 
-  const fetchPreviousWorkout = async () => {
+  const fetchPreviousWorkout = useCallback(async () => {
     try {
       const response = await fetch('/api/workouts')
       const workouts = await response.json()
       
-      const lastWorkout = workouts.find((workout: any) => 
+      const lastWorkout = workouts.find((workout: { templateName: string; date: string }) => 
         workout.templateName === templateName && workout.date !== date.toISOString()
       )
 
       if (lastWorkout) {
         const formattedWorkout = {
           ...lastWorkout,
-          exercises: lastWorkout.exercises.map((exercise: any) => ({
+          exercises: lastWorkout.exercises.map((exercise: { name: string; weights: string; reps: string }) => ({
             ...exercise,
             weights: JSON.parse(exercise.weights),
             reps: JSON.parse(exercise.reps),
@@ -67,12 +68,17 @@ export default function WorkoutCanvas({ templateName, exercises, date, onSave }:
     } catch (error) {
       console.error('Error fetching previous workout:', error)
     }
-  }
+  }, [templateName, date])
+
+  useEffect(() => {
+    initializeExerciseData()
+    fetchPreviousWorkout()
+  }, [initializeExerciseData, fetchPreviousWorkout])
 
   const getPreviousReps = (exerciseName: string, weightIndex: number, setIndex: number) => {
     if (!previousWorkout) return null
     
-    const prevExercise = previousWorkout.exercises.find((ex: any) => ex.name === exerciseName)
+    const prevExercise = previousWorkout.exercises.find((ex: ExerciseData) => ex.name === exerciseName)
     if (!prevExercise || !prevExercise.reps[weightIndex] || !prevExercise.reps[weightIndex][setIndex]) {
       return null
     }

@@ -72,7 +72,7 @@ export const formatWeight = (weight: number): string => {
   return weight === 0 ? 'BW' : `${weight}lbs`
 }
 
-export const isWorkoutComplete = (exerciseData: any[]): boolean => {
+export const isWorkoutComplete = (exerciseData: { reps: number[][] }[]): boolean => {
   return exerciseData.some(exercise => 
     exercise.reps.some((weightReps: number[]) => 
       weightReps.some((reps: number) => reps > 0)

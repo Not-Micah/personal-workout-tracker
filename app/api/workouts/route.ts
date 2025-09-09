@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
+interface ExerciseInput {
+  name: string
+  sets: number
+  weights: number[]
+  reps: number[][]
+}
+
 export async function GET() {
   try {
     const workouts = await prisma.workout.findMany({
@@ -43,7 +50,7 @@ export async function POST(request: NextRequest) {
         date: new Date(date),
         templateName,
         exercises: {
-          create: exercises.map((exercise: any) => ({
+          create: exercises.map((exercise: ExerciseInput) => ({
             name: exercise.name,
             sets: exercise.sets,
             weights: JSON.stringify(exercise.weights),

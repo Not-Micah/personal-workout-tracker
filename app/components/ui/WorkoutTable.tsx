@@ -11,7 +11,6 @@ interface WorkoutTableProps {
 }
 
 export default function WorkoutTable({
-  exerciseName,
   sets,
   weights,
   reps = [],

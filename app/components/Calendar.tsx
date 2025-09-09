@@ -7,10 +7,7 @@ import { Workout } from '@/lib/utils'
 import { 
   formatDate, 
   getDaysInMonth, 
-  getFirstDayOfMonth, 
-  isToday,
-  generateArray,
-  WORKOUT_CONFIG 
+  getFirstDayOfMonth
 } from '@/lib/utils'
 
 export default function Calendar() {
