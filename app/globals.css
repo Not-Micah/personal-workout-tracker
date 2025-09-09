@@ -5,103 +5,373 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
-/* Workout App Reusable Components */
+/* Custom component styles using standard CSS */
 .workout-header {
-  @apply sticky top-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-4 py-4 z-50;
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e5e7eb;
+  padding: 16px;
+  z-index: 50;
 }
 
 .workout-exercise-container {
-  @apply border border-gray-200 overflow-hidden;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
 }
 
 .workout-exercise-title {
-  @apply bg-gray-600 px-4 py-3 border-b border-gray-200;
+  background: #ebebeb;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .workout-table-header {
-  @apply grid border-b border-gray-200 bg-gray-50;
+  display: grid;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f3f4f6;
 }
 
 .workout-table-header-cell {
-  @apply flex items-center justify-center text-xs font-medium text-gray-600 py-2 border-r border-gray-200 last:border-r-0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+  padding: 8px;
+  border-right: 1px solid #e5e7eb;
+}
+
+.workout-table-header-cell:last-child {
+  border-right: none;
 }
 
 .workout-table-row {
-  @apply grid border-b border-gray-200 last:border-b-0;
+  display: grid;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.workout-table-row:last-child {
+  border-bottom: none;
 }
 
 .workout-table-row-even {
-  @apply bg-white;
+  background: white;
 }
 
 .workout-table-row-odd {
-  @apply bg-gray-50;
+  background: #f9fafb;
 }
 
 .workout-weight-label {
-  @apply flex items-center px-3 text-xs font-medium text-gray-700 py-3 border-r border-gray-200;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  border-right: 1px solid #e5e7eb;
 }
 
 .workout-input-cell {
-  @apply relative border-r border-gray-200 last:border-r-0;
+  position: relative;
+  border-right: 1px solid #e5e7eb;
+}
+
+.workout-input-cell:last-child {
+  border-right: none;
 }
 
 .workout-input {
-  @apply w-full h-12 text-center text-sm font-medium text-gray-900 bg-transparent focus:bg-gray-100 focus:outline-none;
+  width: 100%;
+  height: 48px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  background: transparent;
+  border: none;
+  outline: none;
+  transition: all 200ms ease-out;
+}
+
+.workout-input:focus {
+  background: #f3f4f6;
 }
 
 .workout-display-cell {
-  @apply flex items-center justify-center h-12 text-sm font-medium text-gray-900 border-r border-gray-200 last:border-r-0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  border-right: 1px solid #e5e7eb;
+}
+
+.workout-display-cell:last-child {
+  border-right: none;
 }
 
 .workout-previous-reps {
-  @apply absolute top-0 right-0.5 text-[10px] text-gray-400 leading-none pointer-events-none z-10 opacity-50;
+  position: absolute;
+  top: 0;
+  right: 2px;
+  font-size: 10px;
+  color: #9ca3af;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.5;
 }
 
 .workout-save-button {
-  @apply fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 p-4 z-30;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 16px;
+  z-index: 30;
 }
 
 .workout-save-button-active {
-  @apply w-full py-3 rounded-lg font-medium transition-colors bg-gray-900 text-white hover:bg-gray-800;
+  width: 100%;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-weight: 500;
+  background: #000000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease-out;
+}
+
+.workout-save-button-active:hover {
+  background: #1f2937;
 }
 
 .workout-save-button-disabled {
-  @apply w-full py-3 rounded-lg font-medium transition-colors bg-gray-200 text-gray-400 cursor-not-allowed;
+  width: 100%;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-weight: 500;
+  background: #e5e7eb;
+  color: #9ca3af;
+  border: none;
+  cursor: not-allowed;
+  transition: all 200ms ease-out;
 }
 
 .calendar-day {
-  @apply aspect-square flex items-center justify-center transition-all rounded-lg;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 200ms ease-out;
 }
 
 .calendar-day-workout {
-  @apply bg-gray-100 text-gray-900 cursor-pointer hover:bg-gray-200;
+  background: #f3f4f6;
+  color: #111827;
+  cursor: pointer;
 }
 
 .calendar-day-empty {
-  @apply bg-white text-gray-400 cursor-default;
+  background: white;
+  color: #9ca3af;
+  cursor: default;
 }
 
 .calendar-day-today {
-  @apply ring-1 ring-gray-300;
+  box-shadow: 0 0 0 2px #000000;
+}
+
+/* Loading Animation */
+.loading-container {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-pulse {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.loading-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.loading-dot {
+  width: 12px;
+  height: 12px;
+  background: #000000;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.loading-dot:nth-child(1) { animation-delay: 0ms; }
+.loading-dot:nth-child(2) { animation-delay: 150ms; }
+.loading-dot:nth-child(3) { animation-delay: 300ms; }
+
+@keyframes pulse {
+  0%, 80%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Fade in animation */
+.fade-in {
+  animation: fadeIn 300ms ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button styles */
+.btn-primary {
+  background: #000000;
+  color: white;
+  border-radius: 9999px;
+  padding: 12px 24px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease-out;
+}
+
+.btn-primary:hover {
+  background: #1f2937;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 9999px;
+  padding: 12px 24px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 200ms ease-out;
+}
+
+.btn-secondary:hover {
+  background: #f9fafb;
+}
+
+.btn-fab {
+  background: #111827;
+  color: white;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: background 200ms ease-out;
+}
+
+.btn-fab:hover {
+  background: #374151;
+}
+
+/* Card styles */
+.card {
+  background: #f9fafb;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: none;
+  transition: all 200ms ease-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.card-centered {
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+/* Typography helpers */
+.heading-large {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: #111827;
+}
+
+@media (min-width: 640px) {
+  .heading-large {
+    font-size: 64px;
+  }
+}
+
+.heading-medium {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: #111827;
+}
+
+@media (min-width: 640px) {
+  .heading-medium {
+    font-size: 32px;
+  }
+}
+
+.subheading {
+  font-size: 18px;
+  font-weight: 500;
+  color: #111827;
+}
+
+@media (min-width: 640px) {
+  .subheading {
+    font-size: 20px;
+  }
+}
+
+.body-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #4b5563;
+}
+
+@media (min-width: 640px) {
+  .body-text {
+    font-size: 16px;
+  }
 }

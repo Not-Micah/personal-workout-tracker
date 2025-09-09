@@ -17,12 +17,12 @@ export default function WorkoutDetail({ workout, onClose }: WorkoutDetailProps) 
         <div className="workout-header">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-lg font-medium text-gray-900">{workout.templateName}</h2>
-              <p className="text-xs text-gray-500">{formatDateForDisplay(workout.date)}</p>
+              <h2 className="subheading">{workout.templateName}</h2>
+              <p className="body-text text-xs">{formatDateForDisplay(workout.date)}</p>
             </div>
             <button
               onClick={onClose}
-              className="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-gray-900"
+              className="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-all duration-200 ease-out hover:bg-gray-50 rounded-lg"
             >
               ✕
             </button>
@@ -36,7 +36,7 @@ export default function WorkoutDetail({ workout, onClose }: WorkoutDetailProps) 
             return (
               <div key={exercise.id} className="workout-exercise-container">
                 <div className="workout-exercise-title">
-                  <h3 className="text-base font-medium text-white">{exercise.name}</h3>
+                  <h3 className="subheading text-white">{exercise.name}</h3>
                 </div>
                 
                 <div className="p-4">
@@ -52,27 +52,6 @@ export default function WorkoutDetail({ workout, onClose }: WorkoutDetailProps) 
             )
           })}
 
-          {/* Summary Stats */}
-          <div className="border border-gray-100 rounded-lg p-4 mt-6">
-            <h3 className="text-base font-medium text-gray-900 mb-3">Summary</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-xs text-gray-500">Exercises</p>
-                <p className="text-lg font-medium text-gray-900">{workout.exercises.length}</p>
-              </div>
-              <div>
-                <p className="text-xs text-gray-500">Total Sets</p>
-                <p className="text-lg font-medium text-gray-900">
-                  {workout.exercises.reduce((total, exercise) => {
-                    const parsedExercise = parseExerciseData(exercise)
-                    return total + parsedExercise.weights.reduce((exerciseTotal, _, weightIndex) => {
-                      return exerciseTotal + (parsedExercise.reps[weightIndex]?.filter(rep => rep > 0).length || 0)
-                    }, 0)
-                  }, 0)}
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

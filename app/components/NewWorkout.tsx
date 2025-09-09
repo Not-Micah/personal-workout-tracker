@@ -59,10 +59,14 @@ export default function NewWorkout({ date, onClose, onSave }: NewWorkoutProps) {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 bg-white z-50 flex items-center justify-center">
-        <div className="flex items-center justify-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-          <span className="ml-3 text-gray-900">Loading templates...</span>
+      <div className="loading-container">
+        <div className="loading-pulse fade-in">
+          <div className="loading-dots">
+            <div className="loading-dot" style={{ '--delay': '0' } as React.CSSProperties}></div>
+            <div className="loading-dot" style={{ '--delay': '1' } as React.CSSProperties}></div>
+            <div className="loading-dot" style={{ '--delay': '2' } as React.CSSProperties}></div>
+          </div>
+          <span className="body-text" style={{marginLeft: '12px'}}>Loading templates...</span>
         </div>
       </div>
     )
@@ -78,21 +82,21 @@ export default function NewWorkout({ date, onClose, onSave }: NewWorkoutProps) {
               {selectedTemplate && (
                 <button
                   onClick={handleBackToSelection}
-                  className="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-gray-900"
+                  className="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-all duration-200 ease-out hover:bg-gray-50 rounded-lg"
                 >
                   ←
                 </button>
               )}
               <div>
-                <h2 className="text-lg font-medium text-gray-900">
+                <h2 className="subheading">
                   {selectedTemplate ? selectedTemplate : 'Select Workout'}
                 </h2>
-                <p className="text-xs text-gray-500">{formatDate(date)}</p>
+                <p className="body-text text-xs">{formatDate(date)}</p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-gray-900"
+              className="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-all duration-200 ease-out hover:bg-gray-50 rounded-lg"
             >
               ✕
             </button>
@@ -106,13 +110,13 @@ export default function NewWorkout({ date, onClose, onSave }: NewWorkoutProps) {
               {Object.keys(templates).map((templateName) => (
                 <div
                   key={templateName}
-                  className="border border-gray-100 rounded-lg p-4 cursor-pointer hover:bg-gray-50 active:bg-gray-100 transition-colors"
+                  className="border border-gray-200 rounded-lg p-4 cursor-pointer hover:bg-gray-50 transition-colors"
                   onClick={() => handleTemplateSelect(templateName)}
                 >
-                  <h3 className="text-base font-medium text-gray-900 mb-1">{templateName}</h3>
-                  <div className="text-sm text-gray-500">
-                    <p className="mb-2">{templates[templateName].length} exercises</p>
-                    <div className="text-xs space-y-1">
+                  <h3 className="subheading">{templateName}</h3>
+                  <div className="body-text">
+                    <p className="mb-2 italic">{templates[templateName].length} exercises</p>
+                    <div className="body-text text-xs space-y-1">
                       {templates[templateName].slice(0, 3).map((exercise, index) => (
                         <div key={index}>• {exercise.name}</div>
                       ))}

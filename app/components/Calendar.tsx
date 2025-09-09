@@ -124,9 +124,9 @@ export default function Calendar() {
           } ${
             isToday ? 'calendar-day-today' : ''
           }`}
-          onClick={() => isWorkout && handleDayClick(day)}
+          onClick={() => handleDayClick(day)}
         >
-          <span className="text-sm font-medium">{day}</span>
+          <span className="body-text font-medium">{day}</span>
         </div>
       )
     }
@@ -140,16 +140,16 @@ export default function Calendar() {
       <div className="flex items-center justify-between mb-8">
         <button
           onClick={() => navigateMonth(-1)}
-          className="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-colors"
+          className="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-all duration-200 ease-out hover:bg-gray-50 rounded-lg"
         >
           ←
         </button>
-        <h2 className="text-lg font-medium text-gray-900">
+        <h2 className="subheading">
           {currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
         </h2>
         <button
           onClick={() => navigateMonth(1)}
-          className="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-colors"
+          className="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-all duration-200 ease-out hover:bg-gray-50 rounded-lg"
         >
           →
         </button>
@@ -158,14 +158,14 @@ export default function Calendar() {
       {/* Days of week header */}
       <div className="grid grid-cols-7 mb-1">
         {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, index) => (
-          <div key={index} className="aspect-square flex items-center justify-center text-xs font-medium text-gray-500 mb-2">
+          <div key={index} className="aspect-square flex items-center justify-center text-xs font-medium text-gray-500 mb-2 body-text">
             {day}
           </div>
         ))}
       </div>
 
       {/* Calendar Grid */}
-      <div className="grid grid-cols-7 gap-1 mb-12">
+      <div className="grid grid-cols-7 gap-1 mb-12 fade-in">
         {renderCalendar()}
       </div>
 
@@ -173,7 +173,7 @@ export default function Calendar() {
       <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2">
         <button
           onClick={handleNewWorkout}
-          className="w-14 h-14 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors shadow-lg flex items-center justify-center"
+          className="btn-fab w-14 h-14 flex items-center justify-center text-xl leading-none"
         >
           +
         </button>

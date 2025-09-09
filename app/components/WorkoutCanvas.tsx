@@ -140,7 +140,7 @@ export default function WorkoutCanvas({ templateName, exercises, date, onSave }:
       {exerciseData.map((exercise, exerciseIndex) => (
         <div key={exercise.name} className="workout-exercise-container">
           <div className="workout-exercise-title">
-            <h3 className="text-base font-medium text-white">{exercise.name}</h3>
+            <h3 className="subheading text-white">{exercise.name}</h3>
           </div>
           
           <div className="p-4">
@@ -160,7 +160,7 @@ export default function WorkoutCanvas({ templateName, exercises, date, onSave }:
         </div>
       ))}
 
-      {/* Save Button - Fixed at bottom */}
+      {/* Save Button - Fixed @ bottom! */}
       <div className="workout-save-button">
         <button
           onClick={handleSave}
@@ -177,7 +177,7 @@ export default function WorkoutCanvas({ templateName, exercises, date, onSave }:
 
       {/* Previous Workout Legend */}
       {previousWorkout && (
-        <div className="text-xs text-gray-500 text-center py-4 border-t border-gray-100 mx-4">
+        <div className="body-text text-xs text-center py-4 border-t border-gray-200 mx-4">
           <p>
             Previous reps from{' '}
             <span className="font-medium">
