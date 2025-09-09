@@ -104,6 +104,16 @@ export default function WorkoutCanvas({ templateName, exercises, date, onSave }:
   }
 
   const handleSave = async () => {
+    // Ask for confirmation before saving
+    const hasAnyData = isWorkoutComplete(exerciseData)
+    const confirmMessage = hasAnyData 
+      ? 'Are you sure you want to save this workout?'
+      : 'This workout appears to be empty or incomplete. Are you sure you want to save it?'
+    
+    if (!confirm(confirmMessage)) {
+      return
+    }
+    
     setSaving(true)
     
     try {
@@ -145,11 +155,6 @@ export default function WorkoutCanvas({ templateName, exercises, date, onSave }:
     }
   }
 
-  const isWorkoutCompleteFlag = () => {
-    return isWorkoutComplete(exerciseData)
-  }
-
-
   return (
     <div className="space-y-6 pb-20">
       {exerciseData.map((exercise, exerciseIndex) => (
@@ -179,9 +184,9 @@ export default function WorkoutCanvas({ templateName, exercises, date, onSave }:
       <div className="workout-save-button">
         <button
           onClick={handleSave}
-          disabled={!isWorkoutCompleteFlag() || saving}
+          disabled={saving}
           className={
-            isWorkoutCompleteFlag() && !saving
+            !saving
               ? 'workout-save-button-active'
               : 'workout-save-button-disabled'
           }
