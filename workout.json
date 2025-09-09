@@ -1,22 +1,22 @@
 {
   "Push Hypertrophy": [
     { "name": "Dips", "sets": 6, "weights": [0] },
-    { "name": "Tricep Extensions", "sets": 4, "weights": [35, 42.5] },
-    { "name": "Tricep Pull Downs", "sets": 4, "weights": [70, 80, 90] }
+    { "name": "Tricep Extensions", "sets": 4, "weights": [65, 70] },
+    { "name": "Tricep Pull Downs", "sets": 4, "weights": [35, 42.5, 50] }
   ],
   "Push Skills": [
-    { "name": "Handstand Holds", "sets": 3, "duration": "30-60 seconds" },
-    { "name": "Pike Pushups", "sets": 3, "reps": "8-12" }
+    { "name": "Handstand Holds", "sets": 3, "weights": [0] },
+    { "name": "Pike Pushups", "sets": 5, "weights": [0] }
   ],
   "Pull Hypertrophy": [
-    { "name": "Pull Ups", "sets": 5, "weights": [0, 25] },
-    { "name": "Pull Down", "sets": 4, "weights": [140, 160] },
-    { "name": "Rows", "sets": 4, "weights": [135, 155, 175] },
-    { "name": "Bicep Curls", "sets": 3, "weights": [25, 30, 35] }
+    { "name": "Pull Ups", "sets": 5, "weights": [0] },
+    { "name": "Pull Down", "sets": 4, "weights": [115, 130, 145] },
+    { "name": "Rows", "sets": 4, "weights": [115, 130, 145] },
+    { "name": "Bicep Curls", "sets": 3, "weights": [50, 55, 60] }
   ],
   "Pull Skills": [
-    { "name": "Front Lever", "sets": 3, "progression": "tucked/advanced tucked" },
-    { "name": "One Arm Shrugs", "sets": 3, "reps": "5-8 each arm" }
+    { "name": "Front Lever", "sets": 3, "weights": [0] },
+    { "name": "One Arm Shrugs", "sets": 5, "weights": [0] }
   ],
   "Leg Hypertrophy": [
     { "name": "Hack Squat", "sets": 4, "weights": [180, 225, 270] },
